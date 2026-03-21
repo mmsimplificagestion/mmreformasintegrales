@@ -12,8 +12,6 @@ const LegalNotice = () => (
           <p>En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, a continuación se reflejan los siguientes datos:</p>
           <ul className="list-disc pl-5 space-y-1">
             <li><strong>Titular:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">Francisco Melgarejo</span></li>
-            <li><strong>NIF:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">[NIF]</span></li>
-            <li><strong>Domicilio:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">[Dirección fiscal completa]</span>, Cervelló 08758, Barcelona</li>
             <li><strong>Teléfono:</strong> +34 652 631 733</li>
             <li><strong>Email:</strong> melgarejo.francisco@hotmail.es</li>
           </ul>
