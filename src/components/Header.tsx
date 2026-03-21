@@ -38,7 +38,7 @@ const Header = () => {
           <img
             src={logoMM}
             alt="M&M Reformas Integrales"
-            className="h-12 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto object-contain font-medium shadow-none" />
+            className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto object-contain" />
           
           <span className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight">
             M&M <span className="text-primary">Reformas Integrales</span>
