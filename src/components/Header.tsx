@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logoMM from "@/assets/logo-mm.jpeg";
+import logoMM from "@/assets/logo-mm.png";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,7 +35,7 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logoMM} alt="M&M Reformas Integrales" className="h-10 md:h-12 w-auto rounded-sm" />
+          <img src={logoMM} alt="M&M Reformas Integrales" className="h-14 md:h-16 w-auto" />
           <span className="font-heading text-xl md:text-2xl font-bold text-foreground tracking-tight">
             M&M <span className="text-primary">Reformas Integrales</span>
           </span>
