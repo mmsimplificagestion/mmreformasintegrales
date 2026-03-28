@@ -10,9 +10,6 @@ const PrivacyPolicy = () => (
         <div className="prose prose-sm max-w-none text-muted-foreground space-y-6">
           <h2 className="font-heading text-xl font-bold text-foreground">Responsable del tratamiento</h2>
           <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Identidad:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">[Nombre fiscal completo]</span></li>
-            <li><strong>NIF:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">[NIF]</span></li>
-            <li><strong>Dirección:</strong> <span className="bg-sand/60 px-2 py-0.5 rounded text-foreground">[Dirección fiscal completa]</span>, Cervelló 08758, Barcelona</li>
             <li><strong>Email:</strong> melgarejo.francisco@hotmail.es</li>
             <li><strong>Teléfono:</strong> +34 652 631 733</li>
           </ul>
