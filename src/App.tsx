@@ -30,7 +30,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/mmreformasintegrales/">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
