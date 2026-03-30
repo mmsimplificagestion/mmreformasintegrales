@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { useLocalizedPath } from "@/hooks/useLocalizedPath";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  const { localePath, homePath } = useLocalizedPath();
+
+  const navLinks = [
+    { label: t.nav.home, href: homePath },
+    { label: t.nav.services, href: localePath("services") },
+    { label: t.nav.projects, href: localePath("projects") },
+    { label: t.nav.about, href: localePath("about") },
+    { label: t.nav.contact, href: localePath("contact") },
+  ];
+
   return (
     <footer className="bg-carbon text-card py-16">
       <div className="container mx-auto px-4 lg:px-8">
@@ -11,7 +24,7 @@ const Footer = () => {
               M&M <span className="text-primary">Reformas Integrales</span>
             </h3>
             <p className="text-card/60 text-sm leading-relaxed mb-4">
-              Reformas, construcción y rehabilitación integral en Cervelló y Barcelona. Francisco Melgarejo.
+              {t.footer.tagline}
             </p>
             <a
               href="https://www.instagram.com/melgarejo9370"
@@ -25,15 +38,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">Navegación</h4>
+            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">{t.footer.navigation}</h4>
             <ul className="space-y-2">
-              {[
-                { label: "Inicio", href: "/" },
-                { label: "Servicios", href: "/servicios" },
-                { label: "Proyectos", href: "/proyectos" },
-                { label: "Sobre nosotros", href: "/sobre-nosotros" },
-                { label: "Contacto", href: "/contacto" },
-              ].map((l) => (
+              {navLinks.map((l) => (
                 <li key={l.href}>
                   <Link to={l.href} className="text-sm text-card/60 hover:text-primary transition-colors">
                     {l.label}
@@ -44,7 +51,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">Contacto</h4>
+            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">{t.footer.contactTitle}</h4>
             <ul className="space-y-3">
               <li>
                 <a href="tel:+34652631733" className="flex items-center gap-2 text-sm text-card/60 hover:text-primary transition-colors">
@@ -66,21 +73,21 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">Legal</h4>
+            <h4 className="font-heading font-semibold mb-4 text-sm uppercase tracking-wider text-card/40">{t.footer.legal}</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/aviso-legal" className="text-sm text-card/60 hover:text-primary transition-colors">
-                  Aviso legal
+                <Link to={localePath("legalNotice")} className="text-sm text-card/60 hover:text-primary transition-colors">
+                  {t.footer.legalNotice}
                 </Link>
               </li>
               <li>
-                <Link to="/politica-privacidad" className="text-sm text-card/60 hover:text-primary transition-colors">
-                  Política de privacidad
+                <Link to={localePath("privacyPolicy")} className="text-sm text-card/60 hover:text-primary transition-colors">
+                  {t.footer.privacyPolicy}
                 </Link>
               </li>
               <li>
-                <Link to="/politica-cookies" className="text-sm text-card/60 hover:text-primary transition-colors">
-                  Política de cookies
+                <Link to={localePath("cookiePolicy")} className="text-sm text-card/60 hover:text-primary transition-colors">
+                  {t.footer.cookiePolicy}
                 </Link>
               </li>
             </ul>
@@ -88,7 +95,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-card/10 mt-12 pt-8 text-center text-xs text-card/40">
-          © {new Date().getFullYear()} M&M Reformas Integrales · Francisco Melgarejo · Cervelló 08758, Barcelona
+          © {new Date().getFullYear()} {t.footer.copyright}
         </div>
       </div>
     </footer>
