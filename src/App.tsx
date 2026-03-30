@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, Navigate, useParams, useLocation } from "react-router-dom";
+import { HashRouter, Route, Routes, Navigate, useParams, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,9 +19,11 @@ const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return null;
 };
 
@@ -56,6 +58,7 @@ const LangRoutes = () => {
 const DefaultRedirect = () => {
   const stored = localStorage.getItem("lang") as Lang | null;
   const lang = stored === "ca" ? "ca" : "es";
+
   return <Navigate to={`/${lang}`} replace />;
 };
 
@@ -64,12 +67,12 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/">
+      <HashRouter>
         <Routes>
           <Route path="/" element={<DefaultRedirect />} />
           <Route path="/:lang/*" element={<LangRoutes />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
