@@ -9,21 +9,23 @@ import livingImg from "@/assets/living-reform.jpg";
 import integralImg from "@/assets/integral-reform.jpg";
 import rehabImg from "@/assets/rehab-reform.jpg";
 import heroImg from "@/assets/hero-reform.jpg";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const categories = ["Todos", "Cocinas", "Baños", "Comedores", "Integrales", "Rehabilitación"];
-
-const projects = [
-  { img: kitchenImg, label: "Cocina moderna con acabados en madera natural", cat: "Cocinas", alt: "Reforma de cocina moderna" },
-  { img: bathroomImg, label: "Baño contemporáneo con ducha a ras de suelo", cat: "Baños", alt: "Reforma de baño moderno" },
-  { img: livingImg, label: "Comedor abierto con luz natural", cat: "Comedores", alt: "Reforma de comedor moderno" },
-  { img: integralImg, label: "Reforma integral de vivienda completa", cat: "Integrales", alt: "Reforma integral de piso" },
-  { img: heroImg, label: "Salón renovado con diseño actual", cat: "Comedores", alt: "Salón reformado moderno" },
-  { img: rehabImg, label: "Rehabilitación completa de dormitorio principal", cat: "Rehabilitación", alt: "Rehabilitación de dormitorio" },
-];
+const projectImages = [kitchenImg, bathroomImg, livingImg, integralImg, heroImg, rehabImg];
+const projectCats = ["Cocinas", "Baños", "Comedores", "Integrales", "Comedores", "Rehabilitación"];
 
 const ProjectsPage = () => {
-  const [active, setActive] = useState("Todos");
-  const filtered = active === "Todos" ? projects : projects.filter((p) => p.cat === active);
+  const { t } = useLanguage();
+  const [active, setActive] = useState(t.projects.categories[0]);
+
+  const projects = projectImages.map((img, i) => ({
+    img,
+    label: t.projects.pageLabels[i],
+    cat: t.projects.categories[projectCats.indexOf(projectCats[i]) !== -1 ? [1, 2, 3, 4, 3, 5][i] : 0],
+    alt: t.projects.pageAlts[i],
+  }));
+
+  const filtered = active === t.projects.categories[0] ? projects : projects.filter((p) => p.cat === active);
 
   return (
     <>
@@ -37,14 +39,14 @@ const ProjectsPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">Proyectos</h1>
+              <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">{t.projects.title}</h1>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Cada espacio tiene su propio potencial. Descubre algunos de nuestros trabajos en reformas integrales, cocinas, baños y rehabilitación.
+                {t.projects.subtitlePage}
               </p>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-2 mb-10">
-              {categories.map((c) => (
+              {t.projects.categories.map((c) => (
                 <button
                   key={c}
                   onClick={() => setActive(c)}

@@ -1,41 +1,41 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const PrivacyPolicy = () => (
-  <>
-    <Header />
-    <main className="pt-24 pb-16">
-      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-        <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8 mt-8">Política de privacidad</h1>
-        <div className="prose prose-sm max-w-none text-muted-foreground space-y-6">
-          <h2 className="font-heading text-xl font-bold text-foreground">Responsable del tratamiento</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Email:</strong> melgarejo.francisco@hotmail.es</li>
-            <li><strong>Teléfono:</strong> +34 652 631 733</li>
-          </ul>
+const PrivacyPolicy = () => {
+  const { t } = useLanguage();
 
-          <h2 className="font-heading text-xl font-bold text-foreground">Finalidad del tratamiento</h2>
-          <p>Los datos personales recogidos a través de los formularios de esta web serán tratados con la finalidad de gestionar las solicitudes de presupuesto, consultas y comunicaciones comerciales relacionadas con los servicios de M&M Reformas Integrales.</p>
-
-          <h2 className="font-heading text-xl font-bold text-foreground">Legitimación</h2>
-          <p>La base legal para el tratamiento de los datos es el consentimiento del usuario, otorgado al enviar sus datos a través de los formularios de contacto y solicitud de presupuesto.</p>
-
-          <h2 className="font-heading text-xl font-bold text-foreground">Destinatarios</h2>
-          <p>Los datos no serán cedidos a terceros salvo obligación legal. No se realizan transferencias internacionales de datos.</p>
-
-          <h2 className="font-heading text-xl font-bold text-foreground">Derechos</h2>
-          <p>El usuario podrá ejercer sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición escribiendo a melgarejo.francisco@hotmail.es, acompañando copia de su documento de identidad.</p>
-
-          <h2 className="font-heading text-xl font-bold text-foreground">Conservación de datos</h2>
-          <p>Los datos personales se conservarán mientras exista una relación comercial o durante el tiempo necesario para cumplir con las obligaciones legales aplicables.</p>
-
-          <h2 className="font-heading text-xl font-bold text-foreground">Seguridad</h2>
-          <p>Se han adoptado las medidas técnicas y organizativas adecuadas para garantizar la seguridad de los datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+  return (
+    <>
+      <Header />
+      <main className="pt-24 pb-16">
+        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8 mt-8">{t.privacyPolicy.title}</h1>
+          <div className="prose prose-sm max-w-none text-muted-foreground space-y-6">
+            {t.privacyPolicy.sections.map((s, i) => (
+              <div key={i}>
+                <h2 className="font-heading text-xl font-bold text-foreground">{s.title}</h2>
+                {s.content && <p>{s.content}</p>}
+                {s.list && (
+                  <ul className="list-disc pl-5 space-y-1">
+                    {s.list.map((item, j) => {
+                      const [label, ...rest] = item.split(": ");
+                      return (
+                        <li key={j}>
+                          <strong>{label}:</strong> {rest.join(": ")}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
-    <Footer />
-  </>
-);
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 export default PrivacyPolicy;
