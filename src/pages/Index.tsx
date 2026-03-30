@@ -10,24 +10,36 @@ import ProcessSection from "@/components/ProcessSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { useEffect } from "react";
 
-const Index = () => (
-  <>
-    <Header />
-    <main>
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <ProcessSection />
-      <WhyUsSection />
-      <FAQSection />
-      <CTASection />
-    </main>
-    <Footer />
-    <WhatsAppButton />
-    <CookieBanner />
-  </>
-);
+const Index = () => {
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    document.title = t.meta.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", t.meta.description);
+  }, [t]);
+
+  return (
+    <>
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <ProcessSection />
+        <WhyUsSection />
+        <FAQSection />
+        <CTASection />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <CookieBanner />
+    </>
+  );
+};
 
 export default Index;
