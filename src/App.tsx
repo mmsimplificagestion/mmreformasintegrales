@@ -67,12 +67,13 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <HashRouter>
+      <BrowserRouter>
+        <HashRedirect />
         <Routes>
           <Route path="/" element={<DefaultRedirect />} />
           <Route path="/:lang/*" element={<LangRoutes />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
