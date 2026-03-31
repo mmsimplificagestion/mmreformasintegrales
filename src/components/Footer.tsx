@@ -60,9 +60,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:melgarejo.francisco@hotmail.es" className="flex items-center gap-2 text-sm text-card/60 hover:text-primary transition-colors">
+                <a href="mailto:contacto@reformascompletas.com" className="flex items-center gap-2 text-sm text-card/60 hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  melgarejo.francisco@hotmail.es
+                  contacto@reformascompletas.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-card/60">
