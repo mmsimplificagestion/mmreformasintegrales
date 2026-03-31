@@ -239,7 +239,7 @@ const ca = {
       {
         title: "Dades identificatives",
         content: "En compliment del deure d'informació recollit a l'article 10 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i del Comerç Electrònic, a continuació es reflecteixen les següents dades:",
-        list: ["Titular: Francisco Melgarejo", "Telèfon: +34 652 631 733", "Email: melgarejo.francisco@hotmail.es"],
+        list: ["Titular: Francisco Melgarejo", "Telèfon: +34 652 631 733", "Email: contacto@reformascompletas.com"],
       },
       {
         title: "Objecte",
@@ -262,11 +262,11 @@ const ca = {
   privacyPolicy: {
     title: "Política de privacitat",
     sections: [
-      { title: "Responsable del tractament", list: ["Email: melgarejo.francisco@hotmail.es", "Telèfon: +34 652 631 733"] },
+      { title: "Responsable del tractament", list: ["Email: contacto@reformascompletas.com", "Telèfon: +34 652 631 733"] },
       { title: "Finalitat del tractament", content: "Les dades personals recollides a través dels formularis d'aquest web seran tractades amb la finalitat de gestionar les sol·licituds de pressupost, consultes i comunicacions comercials relacionades amb els serveis de M&M Reformes Integrals." },
       { title: "Legitimació", content: "La base legal per al tractament de les dades és el consentiment de l'usuari, atorgat en enviar les seves dades a través dels formularis de contacte i sol·licitud de pressupost." },
       { title: "Destinataris", content: "Les dades no seran cedides a tercers excepte obligació legal. No es realitzen transferències internacionals de dades." },
-      { title: "Drets", content: "L'usuari podrà exercir els seus drets d'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició escrivint a melgarejo.francisco@hotmail.es, acompanyant còpia del seu document d'identitat." },
+      { title: "Drets", content: "L'usuari podrà exercir els seus drets d'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició escrivint a contacto@reformascompletas.com, acompanyant còpia del seu document d'identitat." },
       { title: "Conservació de dades", content: "Les dades personals es conservaran mentre existeixi una relació comercial o durant el temps necessari per complir amb les obligacions legals aplicables." },
       { title: "Seguretat", content: "S'han adoptat les mesures tècniques i organitzatives adequades per garantir la seguretat de les dades personals i evitar la seva alteració, pèrdua, tractament o accés no autoritzat." },
     ],
@@ -285,7 +285,7 @@ const ca = {
       },
       { title: "Gestió de cookies", content: "Pots acceptar, rebutjar o configurar les cookies a través del bàner que es mostra en accedir al web. També pots gestionar les cookies des de la configuració del teu navegador." },
       { title: "Desactivació de cookies", content: "Si desactives les cookies, és possible que algunes funcionalitats del web no estiguin disponibles o no funcionin correctament." },
-      { title: "Més informació", content: "Per a qualsevol consulta sobre l'ús de cookies en aquest web, pots contactar-nos a melgarejo.francisco@hotmail.es." },
+      { title: "Més informació", content: "Per a qualsevol consulta sobre l'ús de cookies en aquest web, pots contactar-nos a contacto@reformascompletas.com." },
     ],
   },
 };
