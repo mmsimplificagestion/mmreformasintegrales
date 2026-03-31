@@ -14,8 +14,11 @@ const ContactForm = () => {
     localidad: "",
     mensaje: "",
     privacidad: false,
+    website: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -28,7 +31,7 @@ const ContactForm = () => {
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const v = validate();
     if (Object.keys(v).length > 0) {
@@ -36,7 +39,39 @@ const ContactForm = () => {
       return;
     }
     setErrors({});
-    setSubmitted(true);
+    setApiError("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("https://mm-contact-api.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.nombre,
+          phone: form.telefono,
+          email: form.email,
+          serviceType: form.servicio,
+          location: form.localidad,
+          message: form.mensaje,
+          acceptedPrivacy: form.privacidad,
+          website: form.website,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        setApiError(data?.message || "Error al enviar el formulario.");
+        return;
+      }
+
+      setSubmitted(true);
+      setForm({ nombre: "", telefono: "", email: "", servicio: "", localidad: "", mensaje: "", privacidad: false, website: "" });
+    } catch {
+      setApiError("Error de conexión. Inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -54,6 +89,9 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 md:p-12 border border-border space-y-5">
       <p className="text-muted-foreground text-sm mb-2">{t.contactForm.intro}</p>
+
+      {/* Honeypot */}
+      <input type="text" name="website" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
@@ -104,11 +142,14 @@ const ContactForm = () => {
         {errors.privacidad && <p className="text-destructive text-xs mt-1">{errors.privacidad}</p>}
       </div>
 
+      {apiError && <p className="text-destructive text-sm">{apiError}</p>}
+
       <button
         type="submit"
-        className="w-full bg-primary text-primary-foreground py-3.5 rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors"
+        disabled={loading}
+        className="w-full bg-primary text-primary-foreground py-3.5 rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {t.contactForm.submit}
+        {loading ? "Enviando..." : t.contactForm.submit}
       </button>
     </form>
   );
