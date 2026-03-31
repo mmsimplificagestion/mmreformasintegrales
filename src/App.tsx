@@ -55,6 +55,20 @@ const LangRoutes = () => {
   );
 };
 
+const HashRedirect = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash && location.hash.startsWith("#/")) {
+      const newPath = location.hash.slice(1);
+      window.history.replaceState(null, "", newPath);
+      window.location.reload();
+    }
+  }, [location.hash]);
+
+  return null;
+};
+
 const DefaultRedirect = () => {
   const stored = localStorage.getItem("lang") as Lang | null;
   const lang = stored === "ca" ? "ca" : "es";
