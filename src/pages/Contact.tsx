@@ -43,13 +43,13 @@ const ContactPage = () => {
                       <span className="font-medium text-sm">+34 652 631 733</span>
                     </div>
                   </a>
-                  <a href="mailto:melgarejo.francisco@hotmail.es" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+                  <a href="mailto:contacto@reformascompletas.com" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <span className="text-xs text-muted-foreground block">{t.contact.email}</span>
-                      <span className="font-medium text-sm">melgarejo.francisco@hotmail.es</span>
+                      <span className="font-medium text-sm">contacto@reformascompletas.com</span>
                     </div>
                   </a>
                   <div className="flex items-center gap-3">
