@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Route, Routes, Navigate, useParams, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useParams, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -55,6 +55,20 @@ const LangRoutes = () => {
   );
 };
 
+const HashRedirect = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash && location.hash.startsWith("#/")) {
+      const newPath = location.hash.slice(1);
+      window.history.replaceState(null, "", newPath);
+      window.location.reload();
+    }
+  }, [location.hash]);
+
+  return null;
+};
+
 const DefaultRedirect = () => {
   const stored = localStorage.getItem("lang") as Lang | null;
   const lang = stored === "ca" ? "ca" : "es";
@@ -67,12 +81,13 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <HashRouter>
+      <BrowserRouter>
+        <HashRedirect />
         <Routes>
           <Route path="/" element={<DefaultRedirect />} />
           <Route path="/:lang/*" element={<LangRoutes />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
