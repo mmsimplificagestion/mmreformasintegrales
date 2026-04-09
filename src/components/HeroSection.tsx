@@ -26,7 +26,7 @@ const HeroSection = () => {
           <span className="inline-block text-terracotta-soft text-sm font-medium tracking-wide uppercase mb-4">
             {t.hero.badge}
           </span>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-card leading-tight mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-normal text-card leading-tight mb-6">
             {t.hero.title}
           </h1>
           <p className="text-card/80 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
